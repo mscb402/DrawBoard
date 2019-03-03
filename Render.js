@@ -6,6 +6,7 @@ class Render{
         return this.layers.push(gl) >= 0;
     }
     Render(){
-        
+
     }
 }
+export default Render;

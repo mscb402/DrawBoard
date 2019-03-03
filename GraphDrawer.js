@@ -32,3 +32,4 @@ class GraphDrawer{
 
     }
 }
+export default GraphDrawer;
