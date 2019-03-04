@@ -4,14 +4,15 @@ class GraphDrawer{
         this.ctx = ctx;
         this.defaultStyle = new DrawStyle();
         this.usedStyle = this.defaultStyle;
+        this.defaultStyle.InitUsingCanvas(ctx);
         this.InitStyle();
     }
 
     InitStyle(){
-        this.defaultStyle.InitUsingCanvas(ctx);
+        this.usedStyle = this.defaultStyle;
     }
     SetStyle(newStyle){
-        this.usedStyle = this.defaultStyle;
+        this.usedStyle = newStyle;
     }
     DrawLine(p){
 
