@@ -4,7 +4,7 @@ class Interactive{
         this.ctx = ctx;
         this.render = render;
         this.currentPoint = new Point();
-        this.currentStatus = "Nomal";
+        this.currentStatus = "Normal";
     }
 }
 export default Interactive;

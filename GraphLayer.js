@@ -3,7 +3,7 @@ class GraphLayer{
         this.LayerName = "";
         this.p = p;
         this.gd = gd;
-        this.currentStatus = "Nomal";
+        this.currentStatus = "Normal";
     }
     UpdateStatus(){
         return null; //or GraphLayerOption
@@ -11,13 +11,13 @@ class GraphLayer{
     IsPointAtLayer(p){
         return false;
     }
-    NomalDraw(){
+    NormalDraw(){
         return true;
     }
     ActiveDraw(){
         return true;
     }
-    FoucsDraw(){
+    FocusDraw(){
         return true;
     }
 }
