@@ -8,6 +8,8 @@
     - 样式类，描述画板多各项参数。默认参数为空，可以调用InitUsingCanvas方法自动补齐参数。
 - GraphDrawer.js
     - 画图父类，用于绘画基本图形，直接操作ctx。实例化以后，会自动实例化一个DrewStyle对象，并执行InitUsingCanvas函数进行初始化。
+    - barrier
+        - 该参数表示左边界的坐标位置。所有绘制的图形都是以该边界作为相对位置。
     - SetStyle()
         - 可以调用该方法覆盖当前使用样式
     - InitStyle()
