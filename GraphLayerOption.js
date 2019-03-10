@@ -11,4 +11,4 @@ class GraphLayerOption{
         return true;
     }
 }
-export default GraphLayerOption;
+export {GraphLayerOption};

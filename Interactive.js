@@ -7,4 +7,4 @@ class Interactive{
         this.currentStatus = "Normal";
     }
 }
-export default Interactive;
+export {Interactive};

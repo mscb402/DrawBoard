@@ -47,4 +47,4 @@ class DrawStyle{
         return true;
     }
 }
-export default DrawStyle;
+export {DrawStyle};

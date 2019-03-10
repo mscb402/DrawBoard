@@ -21,4 +21,4 @@ class GraphLayer{
         return true;
     }
 }
-export default GraphLayer;
+export {GraphLayer};

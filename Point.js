@@ -19,4 +19,4 @@ class Point{
         return this.y = y;
     }
 }
-export default Point;
+export {Point};

@@ -1,4 +1,5 @@
-import Point from "Point.js";
+import Point from "./Point.js";
+import DrawStyle from "./DrawStyle.js"
 class GraphDrawer{
     constructor(ctx,barrier){
         //barrier是屏障
@@ -62,4 +63,4 @@ class GraphDrawer{
 
     }
 }
-export default GraphDrawer;
+export {GraphDrawer};
