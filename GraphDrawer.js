@@ -115,9 +115,9 @@ class GraphDrawer{
         let _p3 = this.calcFinalPoint(p3);
 
         this.ctx.moveTo(_p1.getX(),_p1.getY());
-        ctx.lineTo(_p2.getX(),_p2.getY());
-        ctx.lineTo(_p3.getX(),_p3.getY());
-        ctx.lineTo(_p1.getX(),_p1.getY());
+        this.ctx.lineTo(_p2.getX(),_p2.getY());
+        this.ctx.lineTo(_p3.getX(),_p3.getY());
+        this.ctx.lineTo(_p1.getX(),_p1.getY());
 
         if(!fill){
             //画线
