@@ -62,8 +62,28 @@ class GraphDrawer{
     DrawPoint(p,radius = 1){
         return this.DrawCircle(p,radius,true);
     }
-    DrawRect(p){
+    /**
+     * 画一个正方形
+     * @param {Point} from 坐标
+     * @param {int} width 宽
+     * @param {int} height 高
+     * @param {boolean} fill 是否填充，默认假
+     */
+    DrawRect(from,width,height,fill = false){
+        this.ctx.beginPath();
+        let _from = this.calcFinalPoint(from);
 
+        this.ctx.rect(_from.getX(),_from.getY(),width,height);
+
+        if(!fill){
+            //画线
+            this.ctx.stroke();
+        }else{
+            //填充
+            this.ctx.fill();
+        }
+
+        return true;
     }
     DrawTriangle(p){
 
