@@ -8,7 +8,7 @@ class GraphDrawer{
         if(barrier == null){
             this.barrier = new Point(0,0);
         }
-        
+
         this.ctx = ctx;
         this.defaultStyle = new DrawStyle();
         this.usedStyle = this.defaultStyle;
@@ -22,8 +22,29 @@ class GraphDrawer{
     SetStyle(newStyle){
         this.usedStyle = newStyle;
     }
-    DrawLine(p){
-
+    /**
+     * 计算结果边界计算以后的坐标
+     * @param {Point} p 输入坐标
+     * @returns {Point} 返回坐标
+     */
+    calcFinalPoint(p){
+        return new Point( 
+                        p.getX() + this.barrier.getX() ,
+                        p.getY() + this.barrier.getX() 
+                    );
+    }
+    /**
+     * 画一条线
+     * @param {Point} from 起点
+     * @param {Point} to 终点
+     */
+    DrawLine(from,to){
+        this.ctx.beginPath();
+        let _from = this.calcFinalPoint(from);
+        this.ctx.moveTo(_from.getX(), _from.getY());
+        let _to = this.calcFinalPoint(to);
+        this.ctx.lineTo(_to.getX(), _to.getY());
+        this.ctx.stroke();
     }
     DrawPoint(p){
 
