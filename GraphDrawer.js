@@ -12,15 +12,20 @@ class GraphDrawer{
 
         this.ctx = ctx;
         this.defaultStyle = new DrawStyle();
-        this.usedStyle = this.defaultStyle;
         this.defaultStyle.InitUsingCanvas(ctx);
+
+        this.usedStyle = new DrawStyle();
+        this.usedStyle.Style = JSON.parse(JSON.stringify(this.defaultStyle.Style))
+        
         this.InitStyle();
     }
     /**
      * 初始化样式
      */
     InitStyle(){
-        this.usedStyle = this.defaultStyle;
+        //this.usedStyle = new DrawStyle();
+        this.usedStyle.Style = JSON.parse(JSON.stringify(this.defaultStyle.Style))
+
         this.usedStyle.ApplyStyle(this.ctx);
     }
     /**
@@ -28,22 +33,24 @@ class GraphDrawer{
      * @param {DrawStyle} newStyle 新点样式
      */
     SetStyle(newStyle){
-        this.usedStyle = newStyle;
+        this.usedStyle.Style = newStyle;
         this.usedStyle.ApplyStyle(this.ctx);
     }
     /**
      * 获得当前正在使用的颜色，方便基于当前样式进行修改。
+     * @returns {Object} 一个style Map
      */
     getCurrentStyle(){
-        return this.usedStyle;
+        return this.usedStyle.Style;
     }
     /**
      * 获取初始化的样式，是全局样式，用于回滚操作的
+     * @returns {Object} 一个style Map
      */
     getDefaultStyle(){
         //返回深拷贝的Style对象，因为该默认样式是要用于InitStyle方法的
         //如果用户用浅拷贝，可能会被用户修改，导致样式无法回滚
-        return JSON.parse(JSON.stringify(this.defaultStyle))
+        return JSON.parse(JSON.stringify(this.defaultStyle.Style))
     }
     /**
      * 计算结果边界计算以后的坐标
@@ -126,6 +133,7 @@ class GraphDrawer{
             //填充
             this.ctx.fill();
         }
+        return true;
     }
     DrawText(p,text){
         

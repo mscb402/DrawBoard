@@ -1,71 +1,72 @@
 class DrawStyle{
+
     constructor(){
-        
-        this.fillStyle = "";
-        this.strokeStyle  = "";
-        this.globalAlpha = "";
+        this.Style = {};        
+        this.Style.fillStyle = "";
+        this.Style.strokeStyle  = "";
+        this.Style.globalAlpha = "";
 
-        this.lineWidth = "";
-        this.lineCap = "";
-        this.lineJoin = "";
-        this.miterLimit = "";
-        this.lineDashOffset = "";
+        this.Style.lineWidth = "";
+        this.Style.lineCap = "";
+        this.Style.lineJoin = "";
+        this.Style.miterLimit = "";
+        this.Style.lineDashOffset = "";
 
-        this.shadowOffsetX = "";
-        this.shadowOffsetY = "";
-        this.shadowBlur = "";
-        this.shadowColor = ""
+        this.Style.shadowOffsetX = "";
+        this.Style.shadowOffsetY = "";
+        this.Style.shadowBlur = "";
+        this.Style.shadowColor = ""
 
-        this.font = "";
-        this.textAlign = "";
-        this.textBaseline = "";
-        this.direction = "";
+        this.Style.font = "";
+        this.Style.textAlign = "";
+        this.Style.textBaseline = "";
+        this.Style.direction = "";
 
         
     }
 
     InitUsingCanvas(ctx){
-        this.fillStyle = ctx.fillStyle;
-        this.strokeStyle  = ctx.strokeStyle;
-        this.globalAlpha = ctx.globalAlpha;
+        this.Style.fillStyle = ctx.fillStyle;
+        this.Style.strokeStyle  = ctx.strokeStyle;
+        this.Style.globalAlpha = ctx.globalAlpha;
 
-        this.lineWidth = ctx.lineWidth;
-        this.lineCap = ctx.lineCap;
-        this.lineJoin = ctx.lineJoin;
-        this.miterLimit = ctx.miterLimit;
-        this.lineDashOffset = ctx.lineDashOffset;
+        this.Style.lineWidth = ctx.lineWidth;
+        this.Style.lineCap = ctx.lineCap;
+        this.Style.lineJoin = ctx.lineJoin;
+        this.Style.miterLimit = ctx.miterLimit;
+        this.Style.lineDashOffset = ctx.lineDashOffset;
 
-        this.shadowOffsetX = ctx.shadowOffsetX;
-        this.shadowOffsetY = ctx.shadowOffsetY;
-        this.shadowBlur = ctx.shadowBlur;
-        this.shadowColor = ctx.shadowColor;
+        this.Style.shadowOffsetX = ctx.shadowOffsetX;
+        this.Style.shadowOffsetY = ctx.shadowOffsetY;
+        this.Style.shadowBlur = ctx.shadowBlur;
+        this.Style.shadowColor = ctx.shadowColor;
         
-        this.font = ctx.font;
-        this.textAlign = ctx.textAlign;
-        this.textBaseline = ctx.textBaseline;
-        this.direction = ctx.direction;
+        this.Style.font = ctx.font;
+        this.Style.textAlign = ctx.textAlign;
+        this.Style.textBaseline = ctx.textBaseline;
+        this.Style.direction = ctx.direction;
         return true;
     }
     ApplyStyle(ctx){
-        ctx.fillStyle = this.fillStyle;
-        ctx.strokeStyle  = this.strokeStyle;
-        ctx.globalAlpha = this.globalAlpha;
+        ctx.fillStyle = this.Style.fillStyle;
+        ctx.strokeStyle  = this.Style.strokeStyle;
+        ctx.globalAlpha = this.Style.globalAlpha;
 
-        ctx.lineWidth = this.lineWidth;
-        ctx.lineCap = this.lineCap;
-        ctx.lineJoin = this.lineJoin;
-        ctx.miterLimit = this.miterLimit;
-        ctx.lineDashOffset = this.lineDashOffset;
+        ctx.lineWidth = this.Style.lineWidth;
+        ctx.lineCap = this.Style.lineCap;
+        ctx.lineJoin = this.Style.lineJoin;
+        ctx.miterLimit = this.Style.miterLimit;
+        ctx.lineDashOffset = this.Style.lineDashOffset;
 
-        ctx.shadowOffsetX = this.shadowOffsetX;
-        ctx.shadowOffsetY = this.shadowOffsetY;
-        ctx.shadowBlur = this.shadowBlur;
-        ctx.shadowColor = this.shadowColor;
+        ctx.shadowOffsetX = this.Style.shadowOffsetX;
+        ctx.shadowOffsetY = this.Style.shadowOffsetY;
+        ctx.shadowBlur = this.Style.shadowBlur;
+        ctx.shadowColor = this.Style.shadowColor;
         
-        ctx.font = this.font;
-        ctx.textAlign = this.textAlign;
-        ctx.textBaseline = this.textBaseline;
-        ctx.direction = this.direction;
+        ctx.font = this.Style.font;
+        ctx.textAlign = this.Style.textAlign;
+        ctx.textBaseline = this.Style.textBaseline;
+        ctx.direction = this.Style.direction;
         return true;
     }
 }
