@@ -135,7 +135,22 @@ class GraphDrawer{
         }
         return true;
     }
-    DrawText(p,text){
+    /**
+     * 
+     * @param {Point} p 坐标
+     * @param {String} text 文本 
+     * @param {boolean} fill  文本描边还是正常，默认为true，为正常
+     */
+    DrawText(p,text,fill = true){
+        let _p = this.calcFinalPoint(p);
+        if(!fill){
+            //文本描边
+            this.ctx.strokeText(text,_p.getX(),_p.getY());
+        }else{
+            //正常的文本
+            this.ctx.fillText(text,_p.getX(),_p.getY());
+        }
+        return true;
         
     }
     /**
