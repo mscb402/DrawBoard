@@ -21,13 +21,29 @@ class GraphDrawer{
      */
     InitStyle(){
         this.usedStyle = this.defaultStyle;
+        this.usedStyle.ApplyStyle(this.ctx);
     }
     /**
-     * 设置新的样式
+     * 设置新的样式，只有调用该函数才会刷新ctx的样式。
      * @param {DrawStyle} newStyle 新点样式
      */
     SetStyle(newStyle){
         this.usedStyle = newStyle;
+        this.usedStyle.ApplyStyle(this.ctx);
+    }
+    /**
+     * 获得当前正在使用的颜色，方便基于当前样式进行修改。
+     */
+    getCurrentStyle(){
+        return this.usedStyle;
+    }
+    /**
+     * 获取初始化的样式，是全局样式，用于回滚操作的
+     */
+    getDefaultStyle(){
+        //返回深拷贝的Style对象，因为该默认样式是要用于InitStyle方法的
+        //如果用户用浅拷贝，可能会被用户修改，导致样式无法回滚
+        return JSON.parse(JSON.stringify(this.defaultStyle))
     }
     /**
      * 计算结果边界计算以后的坐标
