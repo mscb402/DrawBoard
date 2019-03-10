@@ -3,6 +3,11 @@
 
 **当前状态：代码结构架构中**
 
+## 编译
+执行 `webpack`
+
+在/dist下可以看到bundle.js。
+
 ## 文件功能详细介绍
 
 - DrewStyle.js 
