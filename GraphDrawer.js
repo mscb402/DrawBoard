@@ -1,5 +1,5 @@
-import Point from "./Point.js";
-import DrawStyle from "./DrawStyle.js"
+import {Point} from "./Point.js";
+import {DrawStyle} from "./DrawStyle.js"
 class GraphDrawer{
     constructor(ctx,barrier = new Point(0,0)){
         //barrier是屏障
