@@ -101,11 +101,34 @@ class GraphDrawer{
 
         return true;
     }
-    DrawTriangle(p){
+    /**
+     * 画一个三角形
+     * @param {Point} p1 点1
+     * @param {Point} p2 点2
+     * @param {Point} p3 点3
+     * @param {boolean} fill 是否填充，默认为假 
+     */
+    DrawTriangle(p1,p2,p3,fill = false){
+        this.ctx.beginPath();
+        let _p1 = this.calcFinalPoint(p1);
+        let _p2 = this.calcFinalPoint(p2);
+        let _p3 = this.calcFinalPoint(p3);
 
+        this.ctx.moveTo(_p1.getX(),_p1.getY());
+        ctx.lineTo(_p2.getX(),_p2.getY());
+        ctx.lineTo(_p3.getX(),_p3.getY());
+        ctx.lineTo(_p1.getX(),_p1.getY());
+
+        if(!fill){
+            //画线
+            this.ctx.stroke();
+        }else{
+            //填充
+            this.ctx.fill();
+        }
     }
     DrawText(p,text){
-
+        
     }
     /**
      * 画一个圆
