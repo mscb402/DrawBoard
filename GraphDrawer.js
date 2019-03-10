@@ -60,7 +60,7 @@ class GraphDrawer{
     calcFinalPoint(p){
         return new Point( 
                         p.getX() + this.barrier.getX() ,
-                        p.getY() + this.barrier.getX() 
+                        p.getY() + this.barrier.getY() 
                     );
     }
     /**
