@@ -5,7 +5,8 @@ let can = document.getElementById("ctx");
 let ctx = can.getContext('2d');
 
 let gd = new GraphDrawer(ctx,new Point(0,0));
-gd.barrier = new Point(-40,-10);//
+
+//gd.barrier = new Point(-40,-10);//
 gd.DrawLine(new Point(10,10),new Point(50,50));
 gd.DrawPoint(new Point(60,60),5);
 //获取当前样式
@@ -23,3 +24,5 @@ gd.DrawTriangle(new Point(100,30),
                 new Point(70,100))
 
 gd.DrawText(new Point(140,110),"ChenBeng")
+
+gd.DrawArc(new Point(150,20),new Point(150,100),new Point(50,20),30)
