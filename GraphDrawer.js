@@ -174,5 +174,21 @@ class GraphDrawer{
         
         return true;
     }
+    /**
+     * 在2个点之间创建一条弧
+     * @param {Point} p1 
+     * @param {Point} p2 
+     * @param {int} radius 
+     */
+    DrawArc(p1,p2,radius){
+        this.ctx.beginPath();
+
+        let _p1 = this.calcFinalPoint(p1);
+        let _p2 = this.calcFinalPoint(p2);
+
+        this.ctx.arcTo(_p1.getX(),_p1.getY(),_p2.getX(),_p2.getY(),radius);
+        return true;
+
+    }
 }
 export {GraphDrawer};
