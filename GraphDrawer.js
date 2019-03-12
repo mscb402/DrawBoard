@@ -175,18 +175,22 @@ class GraphDrawer{
         return true;
     }
     /**
-     * 在2个点之间创建一条弧
-     * @param {Point} p1 
-     * @param {Point} p2 
-     * @param {int} radius 
+     * 相当于在3个点之间创建一条弧，只有3个点才能获得得到2个切线
+     * @param {Point} start 起始点
+     * @param {Point} p1 端点1
+     * @param {Point} p2 端点2
+     * @param {int} radius 半径
      */
-    DrawArc(p1,p2,radius){
+    DrawArc(start,p1,p2,radius){
         this.ctx.beginPath();
 
         let _p1 = this.calcFinalPoint(p1);
         let _p2 = this.calcFinalPoint(p2);
+        let _start = this.calcFinalPoint(start);
 
+        this.ctx.moveTo(_start.getX(), _start.getY());
         this.ctx.arcTo(_p1.getX(),_p1.getY(),_p2.getX(),_p2.getY(),radius);
+        this.ctx.stroke();
         return true;
 
     }
