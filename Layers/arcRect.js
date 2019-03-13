@@ -19,8 +19,13 @@ class arcRect extends GraphLayer{
         return null; //or GraphLayerOption
     }
     IsPointAtLayer(p){
+        let _p = new Point(p.getX() - this.p.getX() ,p.getY() - this.p.getY())
+        if(_p.getX() <= this.w && _p.getY() <= this.h){
+            return true;
+        } 
         return false;
     }
+
     NormalDraw(){
         
         let LeftTop1 = this.p;
@@ -73,6 +78,7 @@ class arcRect extends GraphLayer{
         this.gd.DrawLine(LeftDown2,LeftTop3);
         return true;
     }
+
     ActiveDraw(){
         return true;
     }
