@@ -1,11 +1,12 @@
 import {GraphDrawer} from "./GraphDrawer.js"
 import {Point} from "./Point.js";
 import { DrawStyle } from "./DrawStyle.js";
+import {arcRect} from "./Layers/arcRect.js"
 let can = document.getElementById("ctx");
 let ctx = can.getContext('2d');
 
 let gd = new GraphDrawer(ctx,new Point(0,0));
-
+/*
 //gd.barrier = new Point(-40,-10);//
 gd.DrawLine(new Point(10,10),new Point(50,50));
 gd.DrawPoint(new Point(60,60),5);
@@ -23,6 +24,10 @@ gd.DrawTriangle(new Point(100,30),
                 new Point(200,90),
                 new Point(70,100))
 
-gd.DrawText(new Point(140,110),"ChenBeng")
+
 
 gd.DrawArc(new Point(150,20),new Point(150,100),new Point(50,20),30)
+*/
+gd.DrawText(new Point(140,110),"ChenBeng")
+let test = new arcRect(new Point(10,10),gd,100,100,10);
+test.NormalDraw();
