@@ -31,3 +31,4 @@ gd.DrawArc(new Point(150,20),new Point(150,100),new Point(50,20),30)
 gd.DrawText(new Point(140,110),"ChenBeng")
 let test = new arcRect(new Point(10,10),gd,100,100,10);
 test.NormalDraw();
+console.log( test.IsPointAtLayer(new Point(100,100)), test.IsPointAtLayer(new Point(200,200)));
