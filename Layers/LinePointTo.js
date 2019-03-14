@@ -38,9 +38,11 @@ class LinePointTo extends GraphLayer{
         return true;
     }
     ActiveDraw(){
+        this.NormalDraw();
         return true;
     }
     FocusDraw(){
+        this.NormalDraw();
         return true;
     }
     calPoint(){

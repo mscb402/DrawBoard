@@ -80,9 +80,11 @@ class arcRect extends GraphLayer{
     }
 
     ActiveDraw(){
+        this.NormalDraw();
         return true;
     }
     FocusDraw(){
+        this.NormalDraw();
         return true;
     }
 }
