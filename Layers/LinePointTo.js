@@ -2,6 +2,10 @@ import {GraphLayer} from "../GraphLayer"
 import { Point } from "../Point";
 
 class LinePointTo extends GraphLayer{
+    /**
+    * 当前仅仅支持横向花线，不支持偏移
+    */
+    //TODO: 添加斜线支持
     constructor(p,gd,to,spacing = 5,pointTo = "left"){
         super(p,gd)
         this.LayerName = "LinePointTo";
