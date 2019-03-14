@@ -2,6 +2,7 @@ import {GraphDrawer} from "./GraphDrawer.js"
 import {Point} from "./Point.js";
 import { DrawStyle } from "./DrawStyle.js";
 import {arcRect} from "./Layers/arcRect.js"
+import {LinePointTo} from "./Layers/LinePointTo"
 let can = document.getElementById("ctx");
 let ctx = can.getContext('2d');
 
@@ -31,4 +32,6 @@ gd.DrawArc(new Point(150,20),new Point(150,100),new Point(50,20),30)
 gd.DrawText(new Point(140,110),"ChenBeng")
 let test = new arcRect(new Point(10,10),gd,100,100,10);
 test.NormalDraw();
-console.log( test.IsPointAtLayer(new Point(100,100)), test.IsPointAtLayer(new Point(200,200)));
+//console.log( test.IsPointAtLayer(new Point(100,100)), test.IsPointAtLayer(new Point(200,200)));
+let test2 = new LinePointTo(new Point(110,50),gd,new Point(150,50));
+test2.NormalDraw();
