@@ -34,7 +34,7 @@ class LinePointTo extends GraphLayer{
         let MagicWeight = this.pointTo == "left" ? 1 : -1 ;
         let TriangleEnd = new Point(_to2.getX() + (MagicWeight*this.spacing), (_to1.getY() + _to2.getY())/2 );
         let TriangleLeft = new Point(_to1.getX() - (MagicWeight*this.spacing), _to1.getY() - this.spacing);
-        let TriangleRight = new Point(_to2.getX() - (MagicWeight*this.spacing), _to2.getY() - this.spacing);
+        let TriangleRight = new Point(_to2.getX() - (MagicWeight*this.spacing), _to2.getY() + this.spacing);
 
         this.gd.DrawLine(TriangleLeft,TriangleEnd);
         this.gd.DrawLine(TriangleRight,TriangleEnd);
