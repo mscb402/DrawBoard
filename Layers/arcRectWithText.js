@@ -3,6 +3,7 @@ import {GraphLayer} from "../GraphLayer"
 import { Point } from "../Point";
 
 class arcRectWithText extends GraphLayer{
+    //文字默认会居中对齐
     constructor(p,gd,w,h,text){
         super(p,gd)
         this.LayerName = "arcRectWithText";
@@ -21,7 +22,11 @@ class arcRectWithText extends GraphLayer{
         this.arcRect.NormalDraw();
         let x = this.p.getX() + this.w/2;
         let y = this.p.getY() + this.h/2;
+        let objStyle = this.gd.getCurrentStyle();
+        objStyle.textAlign = "center";
+        this.gd.SetStyle(objStyle);
         this.gd.DrawText(new Point(x,y),this.text);
+        this.gd.InitStyle();
         return true;
     }
     ActiveDraw(){
