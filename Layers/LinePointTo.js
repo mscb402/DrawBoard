@@ -31,14 +31,15 @@ class LinePointTo extends GraphLayer{
 
         this.gd.DrawLine(_from1,_to1);
         this.gd.DrawLine(_from2,_to2);
-        
+        //暂时删除箭头
+        /*
         let TriangleLeft  = this.RealPoint[2][0];
         let TriangleEnd   = this.RealPoint[2][1];
         let TriangleRight = this.RealPoint[2][2];
 
         this.gd.DrawLine(TriangleLeft,TriangleEnd);
         this.gd.DrawLine(TriangleRight,TriangleEnd);
-        
+        */
         return true;
     }
     ActiveDraw(){
