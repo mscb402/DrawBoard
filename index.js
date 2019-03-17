@@ -3,6 +3,7 @@ import {Point} from "./Point.js";
 import { DrawStyle } from "./DrawStyle.js";
 import {arcRect} from "./Layers/arcRect.js"
 import {LinePointTo} from "./Layers/LinePointTo"
+import {arcRectWithText} from "./Layers/arcRectWithText.js";
 let can = document.getElementById("ctx");
 let ctx = can.getContext('2d');
 
@@ -30,7 +31,7 @@ gd.DrawTriangle(new Point(100,30),
 gd.DrawArc(new Point(150,20),new Point(150,100),new Point(50,20),30)
 */
 gd.DrawText(new Point(140,110),"ChenBeng")
-let test = new arcRect(new Point(10,10),gd,100,100,10);
+let test = new arcRectWithText(new Point(10,10),gd,100,100,"hello");
 test.NormalDraw();
 //console.log( test.IsPointAtLayer(new Point(100,100)), test.IsPointAtLayer(new Point(200,200)));
 //正确
