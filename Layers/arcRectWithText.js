@@ -21,7 +21,7 @@ class arcRectWithText extends GraphLayer{
         this.arcRect.NormalDraw();
         let x = this.p.getX() + this.w/2;
         let y = this.p.getY() + this.h/2;
-        this.gd.DrawText(new Point(x,y),this.this.text);
+        this.gd.DrawText(new Point(x,y),this.text);
         return true;
     }
     ActiveDraw(){
