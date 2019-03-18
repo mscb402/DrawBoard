@@ -1,3 +1,5 @@
+import C from "CONST.js"
+
 class Render{
     constructor(){
         this.layers = [];
@@ -9,13 +11,13 @@ class Render{
         //遍历每一个层，并根据状态渲染
         this.layers.forEach(e =>{
             switch (e.currentStatus) {
-                case "Nomal":
+                case C.NORMAL_STATUS:
                     e.NormalDraw();
                     break;
-                case "Focus":
+                case C.ACTIVE_STATUS:
                     e.FocusDraw();
                     break;
-                case "Active":
+                case C.FOCUS_STATUS:
                     e.ActiveDraw();
                     break;
                 default:
