@@ -1,4 +1,4 @@
-import C from "CONST.js"
+import {C} from "./CONST"
 
 class Render{
     constructor(){
