@@ -1,7 +1,7 @@
 import {Point} from "./Point.js";
 import {DrawStyle} from "./DrawStyle.js"
 class GraphDrawer{
-    constructor(ctx,barrier = new Point(0,0)){
+    constructor(ctx,canv,barrier = new Point(0,0)){
         //barrier是屏障
         //用于计算其他组件的相对位置
         //默认的barrier应该为（0，0），也就是左上角
@@ -11,6 +11,7 @@ class GraphDrawer{
         }
 
         this.ctx = ctx;
+        this.canv = canv;
         this.defaultStyle = new DrawStyle();
         this.defaultStyle.InitUsingCanvas(ctx);
 
@@ -193,6 +194,12 @@ class GraphDrawer{
         this.ctx.stroke();
         return true;
 
+    }
+    /**
+     * 清空画布
+     */
+    Clear(){
+        this.ctx.clearRect(0, 0, this.canv.width, this.canv.height);
     }
 }
 export {GraphDrawer};
