@@ -14,6 +14,7 @@ let render = new Render();
 let test = new arcRectWithText(new Point(10,10),gd,100,100,"hello");
 render.AddLayer(test);
 let itac = new Interactive(can,render,gd);
+itac.start();//启动交互
 /*
 //gd.barrier = new Point(-40,-10);//
 gd.DrawLine(new Point(10,10),new Point(50,50));
