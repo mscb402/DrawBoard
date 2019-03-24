@@ -113,7 +113,12 @@ class Interactive{
         let p1 = this.PointStack[0];
         let p2 = this.PointStack[1];
 
-        let move = new Point(p1.getX() - p2.getX(), p1.getY() - p2.getY())
+        //这里乘-1，是因为，Barrier的显示和实际相反
+        //比如 （1，0）表示向右移动
+        //    (-1,0) 表示向左移动
+        let move = new Point(
+            -1 *(p1.getX() - p2.getX()), 
+            -1 *(p1.getY() - p2.getY()))
         return new Point(
             oldPoint.getX() + move.getX(),
             oldPoint.getY() + move.getY(),
