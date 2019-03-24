@@ -13,7 +13,7 @@ let gd = new GraphDrawer(ctx,can,new Point(0,0));
 let render = new Render();
 let test = new arcRectWithText(new Point(10,10),gd,100,100,"hello");
 render.AddLayer(test);
-let itac = new Interactive(can,render);
+let itac = new Interactive(can,render,gd);
 /*
 //gd.barrier = new Point(-40,-10);//
 gd.DrawLine(new Point(10,10),new Point(50,50));
