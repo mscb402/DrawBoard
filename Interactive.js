@@ -9,12 +9,20 @@ class Interactive{
         this.currentPoint = new Point();
         this.currentStatus = "Normal";
         this.PointStack = [];//坐标栈
+        //默认为不启动
+        this.IsStart = false;
+        
+
+    }
+    start(){
+        this.IsStart = true;
         this.canv.addEventListener("mousemove", e => { this.mousemove(e); });
         this.canv.addEventListener("mousedown",e => { this.mousedown(e); });
         this.canv.addEventListener("mouseup",e => { this.mouseup(e); });
     }
     //鼠标移动时间
     mousemove(e){
+        if(!this.IsStart) return;
         let pos = this.getMousePos(e);
         switch (this.currentStatus) {
             case C.MOUSE_DOWN:
@@ -41,6 +49,9 @@ class Interactive{
             el.UpdateStatus();
         });
         */
+
+        //每移动一次鼠标就渲染一次
+        //必须在启动的状态下
         this.render.Render();
     }
     //鼠标下压事件
