@@ -14,15 +14,16 @@ class Interactive{
         
 
     }
+    //启动交互
     start(){
         this.IsStart = true;
         this.canv.addEventListener("mousemove", e => { this.mousemove(e); });
         this.canv.addEventListener("mousedown",e => { this.mousedown(e); });
         this.canv.addEventListener("mouseup",e => { this.mouseup(e); });
+        this.render.Render();
     }
-    //鼠标移动时间
+    //鼠标移动事件，只有启动才会执行
     mousemove(e){
-        if(!this.IsStart) return;
         let pos = this.getMousePos(e);
         switch (this.currentStatus) {
             case C.MOUSE_DOWN:
@@ -51,10 +52,9 @@ class Interactive{
         */
 
         //每移动一次鼠标就渲染一次
-        //必须在启动的状态下
         this.render.Render();
     }
-    //鼠标下压事件
+    //鼠标下压事件，只有启动才会执行
     mousedown(e){
         //设置当前为鼠标下压事件
         this.currentStatus = C.MOUSE_DOWN;
@@ -63,7 +63,7 @@ class Interactive{
         this.PointStack = [];//清空栈
         this.PointStack.push(pos);
     }
-    //鼠标上移事件
+    //鼠标上移事件，只有启动才会执行
     mouseup(e){
         //设置当前为鼠标上移事件
         this.currentStatus = C.MOUSE_UP;
