@@ -11,6 +11,7 @@ class Interactive{
         this.canv.addEventListener("mousedown",e => { this.mousedown(e); });
         this.canv.addEventListener("mouseup",e => { this.mouseup(e); });
     }
+    //鼠标移动时间
     mousemove(e){
         let pos = this.getMousePos(e);
         //console.log(pos);
@@ -24,9 +25,11 @@ class Interactive{
         */
         this.render.Render();
     }
+    //鼠标下压事件
     mousedown(e){
 
     }
+    //鼠标上移事件
     mouseup(e){
 
     }
@@ -62,6 +65,10 @@ class Interactive{
         }
         
     }
+    /**
+     * 获取鼠标在画布上的位置
+     * @param {*} evt 
+     */
     getMousePos(evt) {
         var rect = this.canv.getBoundingClientRect();
         return new Point(
