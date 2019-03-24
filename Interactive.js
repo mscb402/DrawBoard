@@ -22,6 +22,13 @@ class Interactive{
         this.canv.addEventListener("mouseup",e => { this.mouseup(e); });
         this.render.Render();
     }
+    //结束交互
+    end(){
+        this.IsStart = false;
+        this.canv.addEventListener("mousemove", e => {  });
+        this.canv.addEventListener("mousedown",e => {  });
+        this.canv.addEventListener("mouseup",e => { });
+    }
     //鼠标移动事件，只有启动才会执行
     mousemove(e){
         let pos = this.getMousePos(e);
