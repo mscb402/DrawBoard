@@ -1,10 +1,10 @@
 import {GraphDrawer} from "./core/GraphDrawer.js"
 import {Point} from "./core/Point.js";
-import { DrawStyle } from "../core//DrawStyle.js";
-import {arcRect} from "./Layers/arcRect.js"
-import {LinePointTo} from "./Layers/LinePointTo"
+//import { DrawStyle } from "./core//DrawStyle.js";
+//import {arcRect} from "./Layers/arcRect.js"
+//import {LinePointTo} from "./Layers/LinePointTo"
 import {arcRectWithText} from "./Layers/arcRectWithText.js";
-import { Interactive } from "../core/Interactive.js";
+import { Interactive } from "./core/Interactive.js";
 import {Render} from "./core/Render.js"
 let can = document.getElementById("ctx");
 let ctx = can.getContext('2d');
