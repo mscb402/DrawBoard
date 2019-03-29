@@ -1,6 +1,6 @@
 import { arcRect } from "./arcRect";
-import {GraphLayer} from "../GraphLayer"
-import { Point } from "../Point";
+import {GraphLayer} from "../core/GraphLayer"
+import { Point } from "../core/Point";
 
 class arcRectWithText extends GraphLayer{
     //文字默认会居中对齐

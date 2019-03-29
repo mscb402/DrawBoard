@@ -1,5 +1,5 @@
-import {GraphLayer} from "../GraphLayer"
-import { Point } from "../Point";
+import {GraphLayer} from "../core/GraphLayer"
+import { Point } from "../core/Point";
 
 class arcRect extends GraphLayer{
     constructor(p,gd,w,h,r){
