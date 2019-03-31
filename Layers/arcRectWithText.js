@@ -16,7 +16,7 @@ class arcRectWithText extends GraphLayer{
         return null; //or GraphLayerOption
     }
     IsPointAtLayer(p){
-        return false;
+        return this.arcRect.IsPointAtLayer(p);
     }
     NormalDraw(){
         this.arcRect.NormalDraw();
@@ -37,6 +37,7 @@ class arcRectWithText extends GraphLayer{
     FocusDraw(){
         this.NormalDraw();
         this.arcRect.FocusDraw();
+        console.log("Foucs")
         return true;
     }
 }

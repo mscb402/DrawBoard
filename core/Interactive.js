@@ -46,17 +46,26 @@ class Interactive{
                 break;
         
             default:
+                //默认事件
+                let ls = this.render.layers;//获取层列表
+
+                //遍历每一个层
+                for(let i=0;i<ls.length;i++){
+                    let el = ls[i];
+                    if(el.IsPointAtLayer(pos)){
+                        //鼠标在图形范围内。则改变元素状态为 Focus
+                        el.currentStatus = C.FOCUS_STATUS;
+                    }else{
+                        //不在就改为Normal，这样正常渲染
+                        el.currentStatus = C.NORMAL_STATUS;
+                    }
+                }
+
                 break;
         }
         //console.log(pos);
-        //let ls = this.getWasPointedLayers(pos);
-        /*
-        暂时先不处理
-        ls.forEach(el => {
-            el.currentStatus = C.FOCUS_STATUS;
-            el.UpdateStatus();
-        });
-        */
+        
+        
 
         //每移动一次鼠标就渲染一次
         this.render.Render();
