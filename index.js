@@ -12,7 +12,9 @@ let ctx = can.getContext('2d');
 let gd = new GraphDrawer(ctx,can,new Point(0,0));
 let render = new Render();
 let test = new arcRectWithText(new Point(10,10),gd,100,100,"hello");
+let test2 = new arcRectWithText(new Point(150,100),gd,100,100,"hello");
 render.AddLayer(test);
+render.AddLayer(test2);
 let itac = new Interactive(can,render,gd);
 itac.start();//启动交互
 /*
