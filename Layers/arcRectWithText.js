@@ -35,6 +35,20 @@ class arcRectWithText extends GraphLayer{
         return true;
     }
     FocusDraw(){
+        let objStyle = this.gd.getCurrentStyle();
+        objStyle.strokeStyle = "red";
+        this.gd.SetStyle(objStyle);
+        this.arcRect.NormalDraw();
+
+        let x = this.p.getX() + this.w/2;
+        let y = this.p.getY() + this.h/2;
+        objStyle = this.gd.getDefaultStyle();
+        objStyle.textAlign = "center";
+        this.gd.SetStyle(objStyle);
+        this.gd.DrawText(new Point(x,y),this.text);
+        this.gd.InitStyle();
+        return true;
+
         this.NormalDraw();
         this.arcRect.FocusDraw();
         console.log("Foucs")
