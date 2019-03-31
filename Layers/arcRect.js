@@ -19,10 +19,11 @@ class arcRect extends GraphLayer{
         return null; //or GraphLayerOption
     }
     IsPointAtLayer(p){
-        let _p = new Point(p.getX() - this.p.getX() ,p.getY() - this.p.getY())
-        if(_p.getX() <= this.w && _p.getY() <= this.h){
-            return true;
-        } 
+        if(p.getX() >= this.p.getX() && p.getX() <= this.p.getX()+this.w){
+            if( p.getY() >= this.p.getY() && p.getY() <= this.p.getY()+this.h ){
+                return true;
+            }
+        }
         return false;
     }
 
