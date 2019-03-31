@@ -26,10 +26,10 @@ class Render{
                     e.NormalDraw();
                     break;
                 case C.ACTIVE_STATUS:
-                    e.FocusDraw();
+                    e.ActiveDraw();
                     break;
                 case C.FOCUS_STATUS:
-                    e.ActiveDraw();
+                    e.FocusDraw();
                     break;
                 default:
                     //不做操作
