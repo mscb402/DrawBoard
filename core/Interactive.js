@@ -54,7 +54,7 @@ class Interactive{
                     let el = ls[i];
                     //减去边界
                     let _pos = new Point(pos.getX() - this.gd.barrier.getX(),pos.getY() - this.gd.barrier.getY());
-                    console.log(_pos);
+                    //console.log(_pos);
                     if(el.IsPointAtLayer(_pos)){
                         //鼠标在图形范围内。则改变元素状态为 Focus
                         el.currentStatus = C.FOCUS_STATUS;
