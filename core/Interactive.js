@@ -11,6 +11,7 @@ class Interactive{
         this.PointStack = [];//坐标栈
         //默认为不启动
         this.IsStart = false;
+        this.FoucsedLayers = [];//当前被激活的元素
         
 
     }
@@ -44,7 +45,11 @@ class Interactive{
                 this.PointStack = [];
                 this.PointStack.push(pos);
                 break;
-        
+            case C.MOUSE_UP:
+                this.currentStatus = C.NORMAL_STATUS;//恢复为原本的状态
+            case C.FOCUS_STATUS:
+                this.FoucsedLayers = [];
+                this.currentStatus = C.NORMAL_STATUS;//恢复为原本的状态
             default:
                 //默认事件
                 let ls = this.render.layers;//获取层列表
@@ -58,6 +63,8 @@ class Interactive{
                     if(el.IsPointAtLayer(_pos)){
                         //鼠标在图形范围内。则改变元素状态为 Focus
                         el.currentStatus = C.FOCUS_STATUS;
+                        this.currentStatus = C.FOCUS_STATUS;//同时设置主状态为激活事件
+                        this.FoucsedLayers.push(el);
                     }else{
                         //不在就改为Normal，这样正常渲染
                         el.currentStatus = C.NORMAL_STATUS;
@@ -75,12 +82,25 @@ class Interactive{
     }
     //鼠标下压事件，只有启动才会执行
     mousedown(e){
-        //设置当前为鼠标下压事件
-        this.currentStatus = C.MOUSE_DOWN;
-        //记录当前坐标
-        let pos = this.getMousePos(e);
-        this.PointStack = [];//清空栈
-        this.PointStack.push(pos);
+        if(this.currentStatus == C.NORMAL_STATUS){
+            //如果当前状态是正常，则下压表示要移动画布
+            //设置当前为鼠标下压事件
+            this.currentStatus = C.MOUSE_DOWN;
+            //记录当前坐标
+            let pos = this.getMousePos(e);
+            this.PointStack = [];//清空栈
+            this.PointStack.push(pos);
+        }else if(this.currentStatus == C.FOCUS_STATUS){
+            //如果主状态是激活状态，则表示当前元素被点击
+            let ls = this.getWasPointedLayers();
+            if(ls.length == 0){
+                return;
+            }
+            let one_layer = ls[0];//只支持响应一个点击元素
+            one_layer.currentStatus = C.ACTIVE_STATUS;
+            this.render.Render();
+        }
+        
     }
     //鼠标上移事件，只有启动才会执行
     mouseup(e){
@@ -88,15 +108,16 @@ class Interactive{
         this.currentStatus = C.MOUSE_UP;
         this.PointStack = [];//清空栈
     }
-    getWasPointedLayers(p){
+    getWasPointedLayers(){
+        /*
         let ls = [];
         for(let i=0;i<this.render.layers.length;i++){
             let l = this.render.layers[i];
             if(l.IsPointAtLayer(p)){
                 ls.push(l);
             }
-        }
-        return ls;
+        }*/
+        return this.FoucsedLayers;
     }
     //这个函数最后写
     statusTrans(layerSts,currentMouseSts){
