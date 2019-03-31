@@ -13,7 +13,7 @@ class arcRectWithText extends GraphLayer{
         this.arcRect = new arcRect(p,gd,w,h,10);
     }
     UpdateStatus(){
-        return null; //or GraphLayerOption
+        return "123"; //or GraphLayerOption
     }
     IsPointAtLayer(p){
         return this.arcRect.IsPointAtLayer(p);

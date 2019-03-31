@@ -82,6 +82,7 @@ class Interactive{
     }
     //鼠标下压事件，只有启动才会执行
     mousedown(e){
+        //console.log(this.currentStatus);
         if(this.currentStatus == C.NORMAL_STATUS){
             //如果当前状态是正常，则下压表示要移动画布
             //设置当前为鼠标下压事件
@@ -98,6 +99,7 @@ class Interactive{
             }
             let one_layer = ls[0];//只支持响应一个点击元素
             one_layer.currentStatus = C.ACTIVE_STATUS;
+            this.ShowGraphLayerOption(one_layer.UpdateStatus());
             this.render.Render();
         }
         
@@ -175,6 +177,12 @@ class Interactive{
             oldPoint.getY() + move.getY(),
         )
 
+    }
+    ShowGraphLayerOption(glo){
+        if(glo == null){
+            return;
+        }
+        console.log(glo);
     }
 }
 export {Interactive};
