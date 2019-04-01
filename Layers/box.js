@@ -1,12 +1,13 @@
 import {GraphLayer} from "../core/GraphLayer"
 import { Point } from "../core/Point";
 class BoxLayer extends GraphLayer{
-    constructor(p,gd,w,h,r){
+    constructor(p,gd,w,h,r,text){
         super(p,gd)
         this.LayerName = "BoxLayer";
         this.w = w; //宽
         this.h = h; //高
         this.r = r; // 半径
+        this.text = text;//文字
     }
     UpdateStatus(){
         return null; //or GraphLayerOption
@@ -27,6 +28,7 @@ class BoxLayer extends GraphLayer{
         this.gd.DrawArcBox(this.p,this.w,this.h,this.r,true);
         this.gd.DrawArcBox(this.p,this.w,this.h,this.r,false);
         this.gd.InitStyle();
+        this.drawText(this.text, "#0B243B")
         return true;
     }
     ActiveDraw(){
@@ -37,6 +39,7 @@ class BoxLayer extends GraphLayer{
         this.gd.DrawArcBox(this.p,this.w,this.h,this.r,true);
         this.gd.DrawArcBox(this.p,this.w,this.h,this.r,false);
         this.gd.InitStyle();
+        this.drawText(this.text, "#fff")
         return true;
     }
     FocusDraw(){
@@ -47,7 +50,19 @@ class BoxLayer extends GraphLayer{
         this.gd.DrawArcBox(this.p,this.w,this.h,this.r,true);
         this.gd.DrawArcBox(this.p,this.w,this.h,this.r,false);
         this.gd.InitStyle();
+        this.drawText(this.text, "#0B243B")
         return true;
+    }
+    drawText(s,color){
+        let x = this.p.getX() + this.w/2;
+        let y = this.p.getY() + this.h/2;
+        let objStyle = this.gd.getCurrentStyle();
+        objStyle.textAlign = "center";
+        objStyle.fillStyle = color;
+        this.gd.SetStyle(objStyle);
+        this.gd.DrawText(new Point(x,y),s);
+        this.gd.InitStyle();
+        return;
     }
 }
 export {BoxLayer};
