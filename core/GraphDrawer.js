@@ -232,7 +232,7 @@ class GraphDrawer{
         let LeftTop2 = new Point(LeftTop1.getX() + r, LeftTop1.getY() );
         let LeftTop3 = new Point(LeftTop1.getX(), LeftTop1.getY() + r );
         
-        this.gd._DrawArc(
+        this._DrawArc(
             LeftTop2,
             LeftTop1,
             LeftTop3,
@@ -242,7 +242,7 @@ class GraphDrawer{
         let RightTop2 = new Point(LeftTop1.getX() + width - r, LeftTop1.getY() );
         let RightTop3 = new Point(LeftTop1.getX() + width, LeftTop1.getY() + r );
         
-        this.gd._DrawArc(
+        this._DrawArc(
             RightTop2,
             RightTop1,
             RightTop3,
@@ -253,7 +253,7 @@ class GraphDrawer{
         let LeftDown2 = new Point(LeftTop1.getX() , LeftTop1.getY() - r + height );
         let LeftDown3 = new Point(LeftTop1.getX() + r, LeftTop1.getY() + height );
         
-        this.gd._DrawArc(
+        this._DrawArc(
             LeftDown2,
             LeftDown1,
             LeftDown3,
@@ -264,16 +264,16 @@ class GraphDrawer{
         let RightDown2 = new Point(LeftTop1.getX() + width - r, LeftTop1.getY()  + height );
         let RightDown3 = new Point(LeftTop1.getX() + width, LeftTop1.getY() + height - r );
         
-        this.gd._DrawArc(
+        this._DrawArc(
             RightDown2,
             RightDown1,
             RightDown3,
             r
         );
-        this.gd._DrawLine(LeftTop2,RightTop2);
-        this.gd._DrawLine(RightTop3,RightDown3);
-        this.gd._DrawLine(RightDown2,LeftDown3);
-        this.gd._DrawLine(LeftDown2,LeftTop3);
+        this._DrawLine(LeftTop2,RightTop2);
+        this._DrawLine(RightTop3,RightDown3);
+        this._DrawLine(RightDown2,LeftDown3);
+        this._DrawLine(LeftDown2,LeftTop3);
         
 
     }

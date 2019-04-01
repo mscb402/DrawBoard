@@ -24,8 +24,8 @@ class BoxLayer extends GraphLayer{
         style.fillStyle = "#010101";
         style.strokeStyle = "blue";
         this.gd.SetStyle(style);
-        this.gd.DrawArcBox(p,this.w,this.h,this.r,true);
-        this.gd.DrawArcBox(p,this.w,this.h,this.r,false);
+        this.gd.DrawArcBox(this.p,this.w,this.h,this.r,true);
+        this.gd.DrawArcBox(this.p,this.w,this.h,this.r,false);
         this.gd.InitStyle();
         return true;
     }
