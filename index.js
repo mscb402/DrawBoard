@@ -6,6 +6,7 @@ import {Point} from "./core/Point.js";
 import {arcRectWithText} from "./Layers/arcRectWithText.js";
 import { Interactive } from "./core/Interactive.js";
 import {Render} from "./core/Render.js"
+import { BoxLayer } from "./Layers/box.js";
 let can = document.getElementById("ctx");
 let ctx = can.getContext('2d');
 
@@ -13,8 +14,10 @@ let gd = new GraphDrawer(ctx,can,new Point(0,0));
 let render = new Render();
 let test = new arcRectWithText(new Point(10,10),gd,100,100,"hello");
 let test2 = new arcRectWithText(new Point(150,100),gd,100,100,"hello");
+let box = new BoxLayer(new Point(0,0),gd,50,100,10)
 render.AddLayer(test);
 render.AddLayer(test2);
+render.AddLayer(box);
 let itac = new Interactive(can,render,gd);
 itac.start();//启动交互
 /*
