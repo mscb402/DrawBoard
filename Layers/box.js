@@ -36,3 +36,4 @@ class arcRect extends GraphLayer{
         return true;
     }
 }
+export {BoxLayer};
