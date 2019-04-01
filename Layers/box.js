@@ -1,6 +1,6 @@
 import {GraphLayer} from "../core/GraphLayer"
 import { Point } from "../core/Point";
-class arcRect extends GraphLayer{
+class BoxLayer extends GraphLayer{
     constructor(p,gd,w,h,r){
         super(p,gd)
         this.LayerName = "BoxLayer";
