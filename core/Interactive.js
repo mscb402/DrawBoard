@@ -45,6 +45,9 @@ class Interactive{
                 this.PointStack = [];
                 this.PointStack.push(pos);
                 break;
+            case C.ACTIVE_STATUS:
+                //表示当前是处于按压状态，屏蔽移动和激活事件
+                break;
             case C.MOUSE_UP:
                 this.currentStatus = C.NORMAL_STATUS;//恢复为原本的状态
             case C.FOCUS_STATUS:
@@ -100,6 +103,17 @@ class Interactive{
             let one_layer = ls[0];//只支持响应一个点击元素
             one_layer.currentStatus = C.ACTIVE_STATUS;
             this.ShowGraphLayerOption(one_layer.UpdateStatus());
+            this.currentStatus = C.ACTIVE_STATUS;
+            this.render.Render();
+        }else if(this.currentStatus == C.ACTIVE_STATUS){
+            //如果在激活状态下点击，则取消点击事件
+            this.currentStatus = C.NORMAL_STATUS;
+            let ls = this.getWasPointedLayers();
+            if(ls.length == 0){
+                return;
+            }
+            let one_layer = ls[0];//只支持响应一个点击元素
+            one_layer.currentStatus = C.NORMAL_STATUS;
             this.render.Render();
         }
         
@@ -107,8 +121,13 @@ class Interactive{
     //鼠标上移事件，只有启动才会执行
     mouseup(e){
         //设置当前为鼠标上移事件
-        this.currentStatus = C.MOUSE_UP;
         this.PointStack = [];//清空栈
+        if(this.currentStatus == C.ACTIVE_STATUS){
+            //表示当前还处于按压状态，不恢复
+            return;
+        }
+        this.currentStatus = C.MOUSE_UP;//MOUSE_UP这个状态，会在move中转换为Normal状态
+        
     }
     getWasPointedLayers(){
         /*
