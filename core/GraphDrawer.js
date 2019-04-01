@@ -230,6 +230,7 @@ class GraphDrawer{
     DrawArcBox(from,width, height, radius,fill){
         this.ctx.beginPath();
         this._DrawArcBox(from,width, height, radius)
+        this.ctx.closePath();
         if(fill){
             this.ctx.fill();
         }else{
@@ -238,24 +239,14 @@ class GraphDrawer{
         
         return true;
     }
-    _DrawArcBox(from,width, height, radius){
-        this.ctx.translate(from.getX(),from.getY());
-        //从右下角顺时针绘制，弧度从0到1/2PI  
-        this.ctx.arc(width - radius, height - radius, radius, 0, Math.PI / 2);
-        //矩形下边线  
-        this.ctx.lineTo(radius, height);
-        //左下角圆弧，弧度从1/2PI到PI  
-        this.ctx.arc(radius, height - radius, radius, Math.PI / 2, Math.PI);
-        //矩形左边线  
-        this.ctx.lineTo(0, radius);
-        //左上角圆弧，弧度从PI到3/2PI  
-        this.ctx.arc(radius, radius, radius, Math.PI, Math.PI * 3 / 2);
-        //上边线  
-        this.ctx.lineTo(width - radius, 0);
-        //右上角圆弧  
-        this.ctx.arc(width - radius, radius, radius, Math.PI * 3 / 2, Math.PI * 2);
-        //右边线  
-        this.ctx.lineTo(width, height - radius);
+    _DrawArcBox(from,width, height, r){
+        let _p1 = this.calcFinalPoint(from);
+        //this.ctx.moveTo(_p1.getX(),_p1.getY());
+        let pi = Math.PI;
+        this.ctx.arc(_p1.getX() + r, _p1.getY() + r, r, - pi, -pi / 2);
+        this.ctx.arc(_p1.getX() + width - r, _p1.getY() + r, r, -pi / 2, 0);
+        this.ctx.arc(_p1.getX() + width - r, _p1.getY() + height - r, r, 0, pi / 2);
+        this.ctx.arc(_p1.getX() + r, _p1.getY() + height - r, r, pi / 2, pi);
 
     }
     /**

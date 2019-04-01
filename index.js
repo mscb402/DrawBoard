@@ -14,7 +14,7 @@ let gd = new GraphDrawer(ctx,can,new Point(0,0));
 let render = new Render();
 let test = new arcRectWithText(new Point(10,10),gd,100,100,"hello");
 let test2 = new arcRectWithText(new Point(150,100),gd,100,100,"hello");
-let box = new BoxLayer(new Point(0,0),gd,50,100,10)
+let box = new BoxLayer(new Point(300,10),gd,50,100,10)
 render.AddLayer(test);
 render.AddLayer(test2);
 render.AddLayer(box);
