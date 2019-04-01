@@ -221,65 +221,15 @@ class GraphDrawer{
         return true;
     }
     /**
-     * 画一个带有圆角带矩形
+     * 画一个带圆角的矩形
      * @param {Point} from 
      * @param {int} width 
      * @param {int} height 
-     * @param {int} r 
+     * @param {int} radius 
      */
-    _DrawArcBox(from,width,height,r){
-        let LeftTop1 = from;
-        let LeftTop2 = new Point(LeftTop1.getX() + r, LeftTop1.getY() );
-        let LeftTop3 = new Point(LeftTop1.getX(), LeftTop1.getY() + r );
-        
-        this._DrawArc(
-            LeftTop2,
-            LeftTop1,
-            LeftTop3,
-            r
-        );
-        let RightTop1 = new Point(LeftTop1.getX() + width, LeftTop1.getY() );
-        let RightTop2 = new Point(LeftTop1.getX() + width - r, LeftTop1.getY() );
-        let RightTop3 = new Point(LeftTop1.getX() + width, LeftTop1.getY() + r );
-        
-        this._DrawArc(
-            RightTop2,
-            RightTop1,
-            RightTop3,
-            r
-        );
-      
-        let LeftDown1 = new Point(LeftTop1.getX() , LeftTop1.getY() + height );
-        let LeftDown2 = new Point(LeftTop1.getX() , LeftTop1.getY() - r + height );
-        let LeftDown3 = new Point(LeftTop1.getX() + r, LeftTop1.getY() + height );
-        
-        this._DrawArc(
-            LeftDown2,
-            LeftDown1,
-            LeftDown3,
-            r
-        );
-
-        let RightDown1 = new Point(LeftTop1.getX() + width , LeftTop1.getY() + height );
-        let RightDown2 = new Point(LeftTop1.getX() + width - r, LeftTop1.getY()  + height );
-        let RightDown3 = new Point(LeftTop1.getX() + width, LeftTop1.getY() + height - r );
-        
-        this._DrawArc(
-            RightDown2,
-            RightDown1,
-            RightDown3,
-            r
-        );
-        this._DrawLine(LeftTop2,RightTop2);
-        this._DrawLine(RightTop3,RightDown3);
-        this._DrawLine(RightDown2,LeftDown3);
-        this._DrawLine(LeftDown2,LeftTop3);
-        
-
-    }
-    DrawArcBox(from,width,height,r,fill = false){
+    DrawArcBox(from,width, height, radius,fill){
         this.ctx.beginPath();
-        this._DrawArcBox(from,width,height,r)
+        this._DrawArcBox(from,width, height, radius)
         if(fill){
             this.ctx.fill();
         }else{
@@ -287,6 +237,26 @@ class GraphDrawer{
         }
         
         return true;
+    }
+    _DrawArcBox(from,width, height, radius){
+        this.ctx.translate(from.getX(),from.getY());
+        //从右下角顺时针绘制，弧度从0到1/2PI  
+        this.ctx.arc(width - radius, height - radius, radius, 0, Math.PI / 2);
+        //矩形下边线  
+        this.ctx.lineTo(radius, height);
+        //左下角圆弧，弧度从1/2PI到PI  
+        this.ctx.arc(radius, height - radius, radius, Math.PI / 2, Math.PI);
+        //矩形左边线  
+        this.ctx.lineTo(0, radius);
+        //左上角圆弧，弧度从PI到3/2PI  
+        this.ctx.arc(radius, radius, radius, Math.PI, Math.PI * 3 / 2);
+        //上边线  
+        this.ctx.lineTo(width - radius, 0);
+        //右上角圆弧  
+        this.ctx.arc(width - radius, radius, radius, Math.PI * 3 / 2, Math.PI * 2);
+        //右边线  
+        this.ctx.lineTo(width, height - radius);
+
     }
     /**
      * 清空画布
