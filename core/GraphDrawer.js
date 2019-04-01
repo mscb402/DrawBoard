@@ -220,8 +220,14 @@ class GraphDrawer{
         this.ctx.stroke();
         return true;
     }
-
-    DrawArcBox(from,width,height,r,fill = false){
+    /**
+     * 画一个带有圆角带矩形
+     * @param {Point} from 
+     * @param {int} width 
+     * @param {int} height 
+     * @param {int} r 
+     */
+    _DrawArcBox(from,width,height,r){
         let LeftTop1 = from;
         let LeftTop2 = new Point(LeftTop1.getX() + r, LeftTop1.getY() );
         let LeftTop3 = new Point(LeftTop1.getX(), LeftTop1.getY() + r );
@@ -264,7 +270,23 @@ class GraphDrawer{
             RightDown3,
             r
         );
+        this.gd._DrawLine(LeftTop2,RightTop2);
+        this.gd._DrawLine(RightTop3,RightDown3);
+        this.gd._DrawLine(RightDown2,LeftDown3);
+        this.gd._DrawLine(LeftDown2,LeftTop3);
+        
 
+    }
+    DrawArcBox(from,width,height,r,fill = false){
+        this.ctx.beginPath();
+        this._DrawArcBox(from,width,height,r)
+        if(fill){
+            this.ctx.fill();
+        }else{
+            this.ctx.stroke();
+        }
+        
+        return true;
     }
     /**
      * 清空画布
