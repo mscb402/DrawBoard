@@ -21,8 +21,8 @@ class BoxLayer extends GraphLayer{
     }
     NormalDraw(){
         let style = this.gd.getDefaultStyle();
-        style.fillStyle = "#010101";
-        style.strokeStyle = "blue";
+        style.fillStyle = "#CEE3F6";
+        style.strokeStyle = "#81BEF7";
         this.gd.SetStyle(style);
         this.gd.DrawArcBox(this.p,this.w,this.h,this.r,true);
         this.gd.DrawArcBox(this.p,this.w,this.h,this.r,false);
@@ -30,9 +30,23 @@ class BoxLayer extends GraphLayer{
         return true;
     }
     ActiveDraw(){
+        let style = this.gd.getDefaultStyle();
+        style.fillStyle = "#81BEF7";
+        style.strokeStyle = "#81BEF7";
+        this.gd.SetStyle(style);
+        this.gd.DrawArcBox(this.p,this.w,this.h,this.r,true);
+        this.gd.DrawArcBox(this.p,this.w,this.h,this.r,false);
+        this.gd.InitStyle();
         return true;
     }
     FocusDraw(){
+        let style = this.gd.getDefaultStyle();
+        style.fillStyle = "#CEE3F6";
+        style.strokeStyle = "#CEF6D8";
+        this.gd.SetStyle(style);
+        this.gd.DrawArcBox(this.p,this.w,this.h,this.r,true);
+        this.gd.DrawArcBox(this.p,this.w,this.h,this.r,false);
+        this.gd.InitStyle();
         return true;
     }
 }
