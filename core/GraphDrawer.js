@@ -69,12 +69,16 @@ class GraphDrawer{
      * @param {Point} from 起点
      * @param {Point} to 终点
      */
-    DrawLine(from,to){
-        this.ctx.beginPath();
+    _DrawLine(from,to){
         let _from = this.calcFinalPoint(from);
         this.ctx.moveTo(_from.getX(), _from.getY());
         let _to = this.calcFinalPoint(to);
         this.ctx.lineTo(_to.getX(), _to.getY());
+        return true;
+    }
+    DrawLine(from,to){
+        this.ctx.beginPath();
+        this._DrawLine(from,to);
         this.ctx.stroke();
         return true;
     }
@@ -83,6 +87,9 @@ class GraphDrawer{
      * @param {Point} p 顶点
      * @param {int} radius 半径
      */
+    _DrawPoint(p,radius = 1){
+        return this._DrawCircle(p,radius,true);
+    }
     DrawPoint(p,radius = 1){
         return this.DrawCircle(p,radius,true);
     }
@@ -93,12 +100,16 @@ class GraphDrawer{
      * @param {int} height 高
      * @param {boolean} fill 是否填充，默认假
      */
-    DrawRect(from,width,height,fill = false){
-        this.ctx.beginPath();
+    _DrawRect(from,width,height){
         let _from = this.calcFinalPoint(from);
 
         this.ctx.rect(_from.getX(),_from.getY(),width,height);
 
+        return true;
+    }
+    DrawRect(from,width,height,fill = false){
+        this.ctx.beginPath();
+        this._DrawRect(from,width,height)
         if(!fill){
             //画线
             this.ctx.stroke();
@@ -116,8 +127,7 @@ class GraphDrawer{
      * @param {Point} p3 点3
      * @param {boolean} fill 是否填充，默认为假 
      */
-    DrawTriangle(p1,p2,p3,fill = false){
-        this.ctx.beginPath();
+    _DrawTriangle(p1,p2,p3){
         let _p1 = this.calcFinalPoint(p1);
         let _p2 = this.calcFinalPoint(p2);
         let _p3 = this.calcFinalPoint(p3);
@@ -127,6 +137,11 @@ class GraphDrawer{
         this.ctx.lineTo(_p3.getX(),_p3.getY());
         this.ctx.lineTo(_p1.getX(),_p1.getY());
 
+        return true;
+    }
+    DrawTriangle(p1,p2,p3,fill = false){
+        this.ctx.beginPath();
+        this._DrawTriangle(p1,p2,p3)
         if(!fill){
             //画线
             this.ctx.stroke();
@@ -161,10 +176,14 @@ class GraphDrawer{
      * @param {boolean} fill 是否为填充模式（默认为假，即画线）
      * @param {Array} arc 角度，默认为[0,2*Math.PI],分别表示起始角/结束角，以弧度计。
      */
-    DrawCircle(p,radius,fill = false,arc=[0,2*Math.PI]){
-        this.ctx.beginPath();
+    _DrawCircle(p,radius,arc=[0,2*Math.PI]){
         let _p = this.calcFinalPoint(p);
         this.ctx.arc(_p.getX(),_p.getY(),radius,arc[0],arc[1]);
+        return true;
+    }
+    DrawCircle(p,radius,fill = false,arc=[0,2*Math.PI]){
+        this.ctx.beginPath();
+        this._DrawCircle(p,radius,arc);
         if(!fill){
             //画线
             this.ctx.stroke();
@@ -172,9 +191,9 @@ class GraphDrawer{
             //填充
             this.ctx.fill();
         }
-        
         return true;
     }
+
     /**
      * 相当于在3个点之间创建一条弧，只有3个点才能获得得到2个切线
      * @param {Point} start 起始点
@@ -182,8 +201,8 @@ class GraphDrawer{
      * @param {Point} p2 端点2
      * @param {int} radius 半径
      */
-    DrawArc(start,p1,p2,radius){
-        this.ctx.beginPath();
+    _DrawArc(start,p1,p2,radius){
+        
 
         let _p1 = this.calcFinalPoint(p1);
         let _p2 = this.calcFinalPoint(p2);
@@ -191,8 +210,60 @@ class GraphDrawer{
 
         this.ctx.moveTo(_start.getX(), _start.getY());
         this.ctx.arcTo(_p1.getX(),_p1.getY(),_p2.getX(),_p2.getY(),radius);
+        
+        return true;
+
+    }
+    DrawArc(start,p1,p2,radius){
+        this.ctx.beginPath();
+        this._DrawArc(start,p1,p2,radius)
         this.ctx.stroke();
         return true;
+    }
+
+    DrawArcBox(from,width,height,r,fill = false){
+        let LeftTop1 = from;
+        let LeftTop2 = new Point(LeftTop1.getX() + r, LeftTop1.getY() );
+        let LeftTop3 = new Point(LeftTop1.getX(), LeftTop1.getY() + r );
+        
+        this.gd._DrawArc(
+            LeftTop2,
+            LeftTop1,
+            LeftTop3,
+            r
+        );
+        let RightTop1 = new Point(LeftTop1.getX() + width, LeftTop1.getY() );
+        let RightTop2 = new Point(LeftTop1.getX() + width - r, LeftTop1.getY() );
+        let RightTop3 = new Point(LeftTop1.getX() + width, LeftTop1.getY() + r );
+        
+        this.gd._DrawArc(
+            RightTop2,
+            RightTop1,
+            RightTop3,
+            r
+        );
+      
+        let LeftDown1 = new Point(LeftTop1.getX() , LeftTop1.getY() + height );
+        let LeftDown2 = new Point(LeftTop1.getX() , LeftTop1.getY() - r + height );
+        let LeftDown3 = new Point(LeftTop1.getX() + r, LeftTop1.getY() + height );
+        
+        this.gd._DrawArc(
+            LeftDown2,
+            LeftDown1,
+            LeftDown3,
+            r
+        );
+
+        let RightDown1 = new Point(LeftTop1.getX() + width , LeftTop1.getY() + height );
+        let RightDown2 = new Point(LeftTop1.getX() + width - r, LeftTop1.getY()  + height );
+        let RightDown3 = new Point(LeftTop1.getX() + width, LeftTop1.getY() + height - r );
+        
+        this.gd._DrawArc(
+            RightDown2,
+            RightDown1,
+            RightDown3,
+            r
+        );
 
     }
     /**
