@@ -78,5 +78,21 @@ MOUSE_UP   ：鼠标释放状态
 MOUSE_NONE ：无
 ```
 
+## 状态转换信息
 
+- 默认情况：NORMAL_STATUS
 
+- 鼠标随意在画板上移动，移动时的状态
+  - MOUSE_DOWN：
+    - 鼠标未松开，表示移动画布，不做状态跟改
+  - MOUSE_UP：
+    - 鼠标释放，表示移动结束：NORMAL_STATUS
+    - 注意，这里没break，可以继续向下执行
+  - FOCUS_STATUS：
+    - 当前是悬停状态，刷新状态为：NORMAL_STATUS
+    - 注意，这里没break，可以继续向下执行
+  - 默认（NORMAL_STATUS）：
+    - 如果悬停在控件上，改变为：FOCUS_STATUS
+    - 否则：NORMAL_STATUS
+
+- 
