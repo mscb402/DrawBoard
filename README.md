@@ -57,3 +57,26 @@
         - 添加一个层实例到渲染队列中，gl为layer实例对象
 - Interactive.js
     - 交互父类。用于监听当前用户鼠标在ctx上的位置，并根据鼠标状态，设置layer实例的状态为：normal，active，focus。并自动调用layer内的UpdateStatus()方法。最后，再根据UpdateStatus返回值显示当前layer的属性。
+
+## 状态表说明
+
+状态信息，在 /core/CONST.js 文件内。
+有以下几种状态：
+
+```
+NORMAL_STATUS ：普通状态
+ACTIVE_STATUS ：激活状态（鼠标点击）
+FOCUS_STATUS  ：焦点状态（鼠标悬停）
+```
+
+另外还有一些中间的状态
+
+```
+MOUSE_OVER ：鼠标悬停状态
+MOUSE_DOWN ：鼠标压下状态
+MOUSE_UP   ：鼠标释放状态
+MOUSE_NONE ：无
+```
+
+
+
