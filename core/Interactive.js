@@ -50,9 +50,11 @@ class Interactive{
                 break;
             case C.MOUSE_UP:
                 this.currentStatus = C.NORMAL_STATUS;//恢复为原本的状态
+                //不break，继续执行
             case C.FOCUS_STATUS:
                 this.FoucsedLayers = [];
                 this.currentStatus = C.NORMAL_STATUS;//恢复为原本的状态
+                //不break，继续执行
             default:
                 //默认事件
                 let ls = this.render.layers;//获取层列表
