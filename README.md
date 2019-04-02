@@ -95,4 +95,15 @@ MOUSE_NONE ：无
     - 如果悬停在控件上，改变为：FOCUS_STATUS
     - 否则：NORMAL_STATUS
 
-- 
+- 鼠标下压，下压时候的状态
+  - NORMAL_STATUS：
+    - 普通状态下，鼠标下压，表示要移动画布了，设置状态：MOUSE_DOWN
+  - FOCUS_STATUS：
+    - 悬停状态，表示当前鼠标在控件上方，改变为激活状态：ACTIVE_STATUS
+  - ACTIVE_STATUS：
+    - 控件激活状态，表示当前已经选中了某个控件，再次点击则表示取消选择。
+    - 所以恢复状态为：NORMAL_STATUS
+- 鼠标释放
+  - 如果之前的状态是：ACTIVE_STATUS，则表示这个状态是刚刚鼠标下压的时候转换，不做任何处理
+  - 否则，改变为 MOUSE_UP
+
