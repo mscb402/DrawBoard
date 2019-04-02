@@ -7,7 +7,7 @@ class Interactive{
         //this.ctx = ctx;
         this.render = render;
         this.currentPoint = new Point();
-        this.currentStatus = "Normal";
+        this.currentStatus = C.NORMAL_STATUS;
         this.PointStack = [];//坐标栈
         //默认为不启动
         this.IsStart = false;
