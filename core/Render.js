@@ -14,6 +14,7 @@ class Render{
         //这里清空画布的接口在layer的gd属性里面，所以随便找到一个调用它的gd
         if(this.layers.length >= 1){
             this.layers[0].gd.Clear();
+            this.layers[0].gd.drawBackground();//绘制图形背景
         }else{
             //没有层需要渲染
             return;

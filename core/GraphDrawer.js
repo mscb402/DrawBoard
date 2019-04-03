@@ -18,9 +18,9 @@ class GraphDrawer{
         this.usedStyle = new DrawStyle();
         this.usedStyle.Style = JSON.parse(JSON.stringify(this.defaultStyle.Style))
         
-        this.backgroundEnable = false;
-        this.background = "";
-        this.BackgroundFunc = ()=>{}; // 一个匿名函数
+        this.backgroundEnable = false; // 设置背景状态
+        this.background = ""; // 当前背景
+        this.BackgroundFunc = ()=>{}; // 一个匿名函数，用于绘制背景
 
         this.InitStyle();
     }
@@ -105,6 +105,8 @@ class GraphDrawer{
         this.ctx.stroke();
         return true;
     }
+
+
     /**
      * 计算结果边界计算以后的坐标
      * @param {Point} p 输入坐标
