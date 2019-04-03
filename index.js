@@ -11,6 +11,8 @@ let can = document.getElementById("ctx");
 let ctx = can.getContext('2d');
 
 let gd = new GraphDrawer(ctx,can,new Point(0,0));
+gd.setBackground("grid"); //设置当前为表格背景
+gd.onBackground();//并开启背景渲染
 let render = new Render();
 //let test = new arcRectWithText(new Point(10,10),gd,100,100,"hello");
 //let test2 = new arcRectWithText(new Point(150,100),gd,100,100,"hello");
