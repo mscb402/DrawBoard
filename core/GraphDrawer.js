@@ -18,6 +18,10 @@ class GraphDrawer{
         this.usedStyle = new DrawStyle();
         this.usedStyle.Style = JSON.parse(JSON.stringify(this.defaultStyle.Style))
         
+        this.backgroundEnable = false;
+        this.background = "";
+        this.BackgroundFunc = ()=>{}; // 一个匿名函数
+
         this.InitStyle();
     }
     /**
@@ -52,6 +56,54 @@ class GraphDrawer{
         //返回深拷贝的Style对象，因为该默认样式是要用于InitStyle方法的
         //如果用户用浅拷贝，可能会被用户修改，导致样式无法回滚
         return JSON.parse(JSON.stringify(this.defaultStyle.Style))
+    }
+    /**
+     * 设置背景
+     * @param {string} background 
+     */
+    setBackground(background){
+        if(background == "grid"){
+            this.onBackground();
+            this.BackgroundFunc = this.drawGradBackground;
+        }
+    }
+    /**
+     * 绘制背景
+     */
+    drawBackground(){
+        if(this.backgroundEnable){
+            this.BackgroundFunc()
+        }
+    }
+    /**
+     * 开启背景
+     */
+    onBackground(){
+        this.backgroundEnable = true;
+    }
+    /**
+     * 关闭背景
+     */
+    offBackground(){
+        this.backgroundEnable = false;
+    }
+    /**
+     * 添加表格背景绘画函数
+     * @param {int} space 间距，暂时未实现
+     */
+    drawGradBackground(space = 10){
+        let w = this.canv.width;
+        let h = this.canv.height;
+        this.ctx.beginPath();
+        for(let y = 0;y <= h;y += space){
+            this._DrawLine(new Point(0,y),new Point(w,y))
+        }
+
+        for(let x = 0;x <= w;x += space){
+            this._DrawLine(new Point(x,0),new Point(x,h))
+        }
+        this.ctx.stroke();
+        return true;
     }
     /**
      * 计算结果边界计算以后的坐标
