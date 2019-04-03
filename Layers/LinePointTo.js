@@ -6,12 +6,13 @@ class LinePointTo extends GraphLayer{
     * 当前仅仅支持横向画线，不支持偏移
     */
     //TODO: 添加斜线支持
-    constructor(p,gd,to,spacing = 5,pointTo = "left"){
+    constructor(p,gd,to,text = "",spacing = 5){
         super(p,gd)
         this.LayerName = "LinePointTo";
         this.to = to;
         this.spacing = spacing;
-        this.pointTo = pointTo;
+        this.text = text;
+        //this.pointTo = pointTo;
         this.calPoint();//计算要绘画的点
         
     }
@@ -30,13 +31,19 @@ class LinePointTo extends GraphLayer{
         let _to2   = this.RealPoint[1][1];
 
         let style = this.gd.getDefaultStyle();
-        //style.fillStyle = "#CEE3F6";
+
         style.strokeStyle = "#D8D8D8";
+        style.fillStyle = "#848484";
+        style.textAlign = "center";
         this.gd.SetStyle(style);
 
         this.gd.DrawLine(_from1,_to1);
         this.gd.DrawLine(_from2,_to2);
-
+        let textPoint = new Point(
+            (_from1.getX() + _to1.getX()) / 2,
+            _to1.getY() - 5
+            );
+        this.gd.DrawText(textPoint,this.text);
         this.gd.InitStyle();
         //暂时删除箭头
         /*
