@@ -19,7 +19,7 @@ class LinePointTo extends GraphLayer{
         return null; //or GraphLayerOption
     }
     IsPointAtLayer(p){
-        
+        //不允许被激活
         return false;
     }
     NormalDraw(){
@@ -29,8 +29,15 @@ class LinePointTo extends GraphLayer{
         let _to1   = this.RealPoint[0][1];
         let _to2   = this.RealPoint[1][1];
 
+        let style = this.gd.getDefaultStyle();
+        //style.fillStyle = "#CEE3F6";
+        style.strokeStyle = "#D8D8D8";
+        this.gd.SetStyle(style);
+
         this.gd.DrawLine(_from1,_to1);
         this.gd.DrawLine(_from2,_to2);
+
+        this.gd.InitStyle();
         //暂时删除箭头
         /*
         let TriangleLeft  = this.RealPoint[2][0];
