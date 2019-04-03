@@ -91,16 +91,26 @@ class GraphDrawer{
      * 添加表格背景绘画函数
      * @param {int} space 间距，暂时未实现
      */
-    drawGradBackground(space = 10){
+    drawGradBackground(space = 30){
         let w = this.canv.width;
         let h = this.canv.height;
+
+        let style = this.getDefaultStyle();
+        style.strokeStyle = "#FAFAFA";
+        this.SetStyle(style);
         this.ctx.beginPath();
         for(let y = 0;y <= h;y += space){
-            this._DrawLine(new Point(0,y),new Point(w,y))
+            let _from = new Point(0,y);
+            let _to = new Point(w,y);
+            this.ctx.moveTo(_from.getX(), _from.getY());
+            this.ctx.lineTo(_to.getX(), _to.getY());
         }
 
         for(let x = 0;x <= w;x += space){
-            this._DrawLine(new Point(x,0),new Point(x,h))
+            let _from = new Point(x,0);
+            let _to = new Point(x,h);
+            this.ctx.moveTo(_from.getX(), _from.getY());
+            this.ctx.lineTo(_to.getX(), _to.getY());
         }
         this.ctx.stroke();
         return true;
