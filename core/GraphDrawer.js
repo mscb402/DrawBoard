@@ -314,6 +314,15 @@ class GraphDrawer{
 
     }
     /**
+     * 
+     * @param {image} img 图形
+     * @param {Point} p 坐标
+     */
+    DrawImage(img,p){
+        let _p = this.calcFinalPoint(p);
+        this.ctx.drawImage(img,_p.getX(),_p.getY());
+    }
+    /**
      * 清空画布
      */
     Clear(){
