@@ -131,6 +131,9 @@ class Interactive{
         this.currentStatus = C.MOUSE_UP;//MOUSE_UP这个状态，会在move中转换为Normal状态
         
     }
+    /**
+     * 获取当前鼠标激活的层
+     */
     getWasPointedLayers(){
         /*
         let ls = [];
@@ -141,28 +144,6 @@ class Interactive{
             }
         }*/
         return this.FoucsedLayers;
-    }
-    //这个函数最后写
-    statusTrans(layerSts,currentMouseSts){
-        switch (layerSts) {
-            case C.NORMAL_STATUS:
-                if(currentMouseSts == C.MOUSE_OVER){
-                    return C.FOCUS_STATUS;
-                }
-                break;
-            case C.FOCUS_STATUS:
-                if(currentMouseSts == C.MOUSE_DOWN){
-                    return C.ACTIVE_STATUS;
-                }
-                if(currentMouseSts == C.MOUSE_OVER){
-                    return C.FOCUS_STATUS;
-                }
-            case C.ACTIVE_STATUS:
-                break;
-            default:
-                return C.NORMAL_STATUS;
-        }
-        
     }
     /**
      * 获取鼠标在画布上的位置
