@@ -21,5 +21,8 @@ class Manager{
     on(){
         this.interactive.start();
     }
+    off(){
+        this.interactive.end();
+    }
 }
 export {Manager}
