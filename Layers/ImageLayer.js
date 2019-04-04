@@ -50,21 +50,21 @@ class ImageLayer extends GraphLayer{
         if(this.normalImage == null){
             return true;
         }
-        this.gd.DrawImage(img,this.p);
+        this.gd.DrawImage(this.normalImage,this.p);
         return true;
     }
     ActiveDraw(){
         if(this.activeImage == null){
             return true;
         }
-        this.gd.DrawImage(img,this.p);
+        this.gd.DrawImage(this.activeImage,this.p);
         return true;
     }
     FocusDraw(){
         if(this.focusImage == null){
             return true;
         }
-        this.gd.DrawImage(img,this.p);
+        this.gd.DrawImage(this.focusImage,this.p);
         return true;
     }
 
