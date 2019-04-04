@@ -1,6 +1,6 @@
 import { GraphLayer } from "../core/GraphLayer";
 
-class image extends GraphLayer{
+class ImageLayer extends GraphLayer{
     /**
      * @param {Point} p 
      * @param {array} imgs Image对象的数组 normal,focus,active
@@ -69,3 +69,4 @@ class image extends GraphLayer{
     }
 
 }
+export {ImageLayer}

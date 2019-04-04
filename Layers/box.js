@@ -4,16 +4,20 @@ import { Point } from "../core/Point";
  * 带文字和圆角的正方形
  */
 class BoxLayer extends GraphLayer{
-    constructor(p,w,h,r,text){
+    constructor(p,w,h,r,text,UpdateStatus=null){
         super(p)
         this.LayerName = "BoxLayer";
         this.w = w; //宽
         this.h = h; //高
         this.r = r; // 半径
         this.text = text;//文字
+        this.UpdateStatusFunc = UpdateStatus;
     }
     UpdateStatus(){
-        return null; //or GraphLayerOption
+        if(this.UpdateStatusFunc == null){
+            return null;
+        }
+        return this.UpdateStatusFunc(); //or GraphLayerOption
     }
     IsPointAtLayer(p){
         if(p.getX() >= this.p.getX() && p.getX() <= this.p.getX()+this.w){
