@@ -1,6 +1,8 @@
 import {GraphLayer} from "../core/GraphLayer"
 import { Point } from "../core/Point";
-
+/**
+ * 正方形
+ */
 class arcRect extends GraphLayer{
     constructor(p,w,h,r){
         super(p);
@@ -28,7 +30,9 @@ class arcRect extends GraphLayer{
     }
 
     NormalDraw(){
-        
+        if(this.gd == null){
+            return;
+        }
         let LeftTop1 = this.p;
         let LeftTop2 = new Point(LeftTop1.getX() + this.r, LeftTop1.getY() );
         let LeftTop3 = new Point(LeftTop1.getX(), LeftTop1.getY() + this.r );
@@ -81,10 +85,16 @@ class arcRect extends GraphLayer{
     }
 
     ActiveDraw(){
+        if(this.gd == null){
+            return;
+        }
         this.NormalDraw();
         return true;
     }
     FocusDraw(){
+        if(this.gd == null){
+            return;
+        }
         this.NormalDraw();
         return true;
     }

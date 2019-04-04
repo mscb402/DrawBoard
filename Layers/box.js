@@ -1,5 +1,8 @@
 import {GraphLayer} from "../core/GraphLayer"
 import { Point } from "../core/Point";
+/**
+ * 带文字和圆角的正方形
+ */
 class BoxLayer extends GraphLayer{
     constructor(p,w,h,r,text){
         super(p)
@@ -21,6 +24,9 @@ class BoxLayer extends GraphLayer{
         return false;
     }
     NormalDraw(){
+        if(this.gd == null){
+            return;
+        }
         let style = this.gd.getDefaultStyle();
         style.fillStyle = "#CEE3F6";
         style.strokeStyle = "#81BEF7";
@@ -32,6 +38,9 @@ class BoxLayer extends GraphLayer{
         return true;
     }
     ActiveDraw(){
+        if(this.gd == null){
+            return;
+        }
         let style = this.gd.getDefaultStyle();
         style.fillStyle = "#81BEF7";
         style.strokeStyle = "#81BEF7";
@@ -43,6 +52,9 @@ class BoxLayer extends GraphLayer{
         return true;
     }
     FocusDraw(){
+        if(this.gd == null){
+            return;
+        }
         let style = this.gd.getDefaultStyle();
         style.fillStyle = "#CEE3F6";
         style.strokeStyle = "#CEF6D8";

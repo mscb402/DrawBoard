@@ -1,6 +1,8 @@
 import {GraphLayer} from "../core/GraphLayer"
 import { Point } from "../core/Point";
-
+/**
+ * 带文字的连接线
+ */
 class LinePointTo extends GraphLayer{
     /**
     * 当前仅仅支持横向画线，不支持偏移
@@ -24,7 +26,9 @@ class LinePointTo extends GraphLayer{
         return false;
     }
     NormalDraw(){
-
+        if(this.gd == null){
+            return;
+        }
         let _from1 = this.RealPoint[0][0];
         let _from2 = this.RealPoint[1][0];
         let _to1   = this.RealPoint[0][1];
@@ -57,10 +61,16 @@ class LinePointTo extends GraphLayer{
         return true;
     }
     ActiveDraw(){
+        if(this.gd == null){
+            return;
+        }
         this.NormalDraw();
         return true;
     }
     FocusDraw(){
+        if(this.gd == null){
+            return;
+        }
         this.NormalDraw();
         return true;
     }

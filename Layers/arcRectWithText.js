@@ -1,7 +1,9 @@
 import { arcRect } from "./arcRect";
 import {GraphLayer} from "../core/GraphLayer"
 import { Point } from "../core/Point";
-
+/**
+ * 已废弃，旧版本带文字和圆角的正方形
+ */
 class arcRectWithText extends GraphLayer{
     //文字默认会居中对齐
     constructor(p,w,h,text){
