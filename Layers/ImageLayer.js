@@ -50,21 +50,46 @@ class ImageLayer extends GraphLayer{
         if(this.normalImage == null){
             return true;
         }
-        this.gd.DrawImage(this.normalImage,this.p);
+        if(!this.normalImage.complete){
+            //if image not complete, we needn't draw it;
+            return true;
+        }
+        try {
+            this.gd.DrawImage(this.normalImage,this.p);
+        } catch (error) {
+            //ignore it, when image load failed
+        }
         return true;
     }
     ActiveDraw(){
         if(this.activeImage == null){
             return true;
         }
-        this.gd.DrawImage(this.activeImage,this.p);
+        if(!this.activeImage.complete){
+            //if image not complete, we needn't draw it;
+            return true;
+        }
+        try {
+            this.gd.DrawImage(this.activeImage,this.p);
+        } catch (error) {
+            //ignore it, when image load failed
+        }
+        
         return true;
     }
     FocusDraw(){
         if(this.focusImage == null){
             return true;
         }
-        this.gd.DrawImage(this.focusImage,this.p);
+        if(!this.focusImage.complete){
+            //if image not complete, we needn't draw it;
+            return true;
+        }
+        try {
+            this.gd.DrawImage(this.focusImage,this.p);
+        } catch (error) {
+            //ignore it, when image load failed
+        }
         return true;
     }
 
