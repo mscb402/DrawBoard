@@ -16,6 +16,7 @@ class Manager{
         this.interactive = new Interactive(this.canv, this.render, this.gd);//声明交互器
     }
     addLayer(layer){
+        layer.setGD(this.gd);
         this.render.AddLayer(layer);
     }
     on(){
