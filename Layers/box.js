@@ -1,8 +1,8 @@
 import {GraphLayer} from "../core/GraphLayer"
 import { Point } from "../core/Point";
 class BoxLayer extends GraphLayer{
-    constructor(p,gd,w,h,r,text){
-        super(p,gd)
+    constructor(p,w,h,r,text){
+        super(p)
         this.LayerName = "BoxLayer";
         this.w = w; //宽
         this.h = h; //高

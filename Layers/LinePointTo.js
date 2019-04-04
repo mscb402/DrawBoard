@@ -6,8 +6,8 @@ class LinePointTo extends GraphLayer{
     * 当前仅仅支持横向画线，不支持偏移
     */
     //TODO: 添加斜线支持
-    constructor(p,gd,to,text = "",spacing = 5){
-        super(p,gd)
+    constructor(p,to,text = "",spacing = 5){
+        super(p)
         this.LayerName = "LinePointTo";
         this.to = to;
         this.spacing = spacing;

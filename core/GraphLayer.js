@@ -1,8 +1,8 @@
 class GraphLayer{
-    constructor(p,gd){
+    constructor(p){
         this.LayerName = "";
         this.p = p;
-        this.gd = gd;
+        this.gd = null;
         this.currentStatus = "Normal";
     }
     UpdateStatus(){
@@ -19,6 +19,10 @@ class GraphLayer{
     }
     FocusDraw(){
         return true;
+    }
+    //设置gd
+    setGD(gd){
+        this.gd = gd;
     }
 }
 export {GraphLayer};

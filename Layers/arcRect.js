@@ -2,8 +2,8 @@ import {GraphLayer} from "../core/GraphLayer"
 import { Point } from "../core/Point";
 
 class arcRect extends GraphLayer{
-    constructor(p,gd,w,h,r){
-        super(p,gd);
+    constructor(p,w,h,r){
+        super(p);
         this.LayerName = "arcRect";
         /*
         this.p = p;

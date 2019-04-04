@@ -4,8 +4,8 @@ import { Point } from "../core/Point";
 
 class arcRectWithText extends GraphLayer{
     //文字默认会居中对齐
-    constructor(p,gd,w,h,text){
-        super(p,gd)
+    constructor(p,w,h,text){
+        super(p)
         this.LayerName = "arcRectWithText";
         this.w = w;
         this.h = h;
